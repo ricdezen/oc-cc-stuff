@@ -14,6 +14,7 @@ SAPLING_NAME = "minecraft:sapling"
 function findOrientation()
     local mayBeLog = false
     while not mayBeLog do
+        turtle.turnRight()
         local anything, blockInFront = turtle.inspect()
         if not anything then
             mayBeLog = true
@@ -38,7 +39,7 @@ function cycle()
 end
 
 -- Try to chop in case you got stuck mid-air
-lumberjack.cycle()
+cycle()
 -- Try to orient yourself
 findOrientation()
 
@@ -47,7 +48,11 @@ while true do
     name = blockInFront["name"]
     
     if name and string.match(name, lumberjack.LOG_PATTERN) then
-        
+        lumberjack.chop()
+        lumberjack.checkFuel(500)
+        turtle.turnRight()
+        lumberjack.unload()
+        turtle.turnLeft()
     end
     print("No tree found, try to plant and fertilize...")
     lumberjack.replant()
