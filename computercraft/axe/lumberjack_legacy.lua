@@ -61,6 +61,11 @@ function lumberjack.replant()
     if sap then
         turtle.place()
     end
+    if turtle.getItemCount() > 0 then
+        turtle.turnLeft()
+        turtle.drop()
+        turtle.turnRight()
+    end
 end
 
 -- Take fertilizer from back, grow tree
