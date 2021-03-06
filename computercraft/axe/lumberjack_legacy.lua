@@ -127,7 +127,7 @@ function lumberjack.pullItem(name, amount)
         turtle.turnLeft()
         -- Can't go forward -> exit.
         if turtle.forward() then
-            steps += 1
+            steps = steps + 1
         else
             turtle.turnRight()
             turtle.turnRight()
