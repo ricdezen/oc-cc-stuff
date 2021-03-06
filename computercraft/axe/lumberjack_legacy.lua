@@ -114,7 +114,7 @@ function lumberjack.pullItem(name, amount)
         if not turtle.inspect() then
             break
         end
-        turtle.suck()
+        turtle.suck(1)
         meta = turtle.getItemDetail(turtle.getSelectedSlot())
         -- Found Barrel -> suck and exit.
         if meta and meta["name"] == name then
