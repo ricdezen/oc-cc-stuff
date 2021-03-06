@@ -22,6 +22,7 @@ while true do
         turtle.turnLeft()
         lumberjack.unload()
         turtle.turnLeft()
+        turtle.turnLeft()
     end
     print("No tree found, try to plant and fertilize...")
     lumberjack.replant(SAPLING_NAME)

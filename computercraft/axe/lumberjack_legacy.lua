@@ -51,16 +51,6 @@ function lumberjack.unload()
     turtle.select(oldSlot)
 end
 
--- Empty the buffer chest in front
--- (Drawer controller on the right)
-function lumberjack.emptyBuffer()
-    buf = peripheral.wrap("front")
-    inv = peripheral.wrap("right")
-    for i = 1, buf.size() do
-        inv.pullItems("front", i)
-    end
-end
-
 -- Take sapling from drawers on the back-right, replant.
 -- Parameters:
 -- name : string Name of the sapling.
