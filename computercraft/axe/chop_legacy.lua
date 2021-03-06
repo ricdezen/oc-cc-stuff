@@ -1,15 +1,12 @@
 --[[
-Chop a tree to the front while keeping
-Drawers behind. Ideally the controller
-is the block directly behind to drop
-inventory properly.
+Chop a tree to the front. A sapling inventory
+should be to the left. A fertilizer inventory
+should be at the back. An output inventory should
+be to the right.
 
 Tested on Minecraft 1.12.2
 --]]
 lumberjack = require("lumberjack_legacy")
-
-SAPLING_NAME = "minecraft:sapling"
-FERTILIZER_NAME = "industrialforegoing:fertilizer"
 
 while true do
     _, blockInFront = turtle.inspect()
@@ -18,10 +15,8 @@ while true do
     if name and string.match(name, lumberjack.LOG_PATTERN) then
         lumberjack.chop()
         lumberjack.checkFuel(500)
-        turtle.turnLeft()
-        turtle.turnLeft()
+        turtle.turnRight()
         lumberjack.unload()
-        turtle.turnLeft()
         turtle.turnLeft()
     end
     print("No tree found, try to plant and fertilize...")
