@@ -3,6 +3,8 @@ Small library to work with a tree farm.
 Setup with a drawer controller and a buffer chest
 on consecutive sides, counter-clockwise.
 i.e.: drawer behind, buffer chest right.
+
+Tested on Minecraft 1.16.5
 ]]--
 
 lumberjack = {}

@@ -1,24 +1,12 @@
 --[[
 Chop a tree to the front while keeping
-Drawers to the back.
+Drawers behind. Ideally the controller
+is the block directly behind to drop
+inventory properly.
 
-Tested on Minecraft 1.16.5
+Tested on Minecraft 1.12.2
 --]]
-lumberjack = require("lumberjack")
-
-function findDrawers()
-    last = nil
-    while true do
-        front = peripheral.wrap("front")
-        if (not front) and last then
-            return
-        end
-        last = front
-        turtle.turnLeft()
-    end
-end
-
-findDrawers()
+lumberjack = require("lumberjack_legacy")
 
 while true do
     _, blockInFront = turtle.inspect()
@@ -30,8 +18,7 @@ while true do
         turtle.turnLeft()
         turtle.turnLeft()
         lumberjack.unload()
-        turtle.turnRight()
-        turtle.turnRight()
+        turtle.turnLeft()
     end
     print("No tree found, try to plant and fertilize...")
     lumberjack.replant()

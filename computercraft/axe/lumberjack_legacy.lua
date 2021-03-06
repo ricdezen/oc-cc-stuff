@@ -2,6 +2,8 @@
 Small library to work with a tree farm.
 Turtle needs to be put with a series of inventories to the right.
 Each inventory must hold only one type of item (i.e. Barrels/drawers).
+
+Tested on Minecraft 1.12.2
 ]]--
 
 lumberjack = {}
@@ -59,20 +61,15 @@ function lumberjack.emptyBuffer()
     end
 end
 
--- Take sapling from back, replant.
-function lumberjack.replant()
-    turtle.turnLeft()
-    turtle.turnLeft()
-    local sap = lumberjack.pullSapling()
+-- Take sapling from drawers on the back-right, replant.
+-- Parameters:
+-- name : string Name of the sapling.
+function lumberjack.replant(name)
     turtle.turnRight()
-    turtle.turnRight()
+    local sap = lumberjack.pullItem(name, 1)
+    turtle.turnLeft()
     if sap then
         turtle.place()
-        turtle.turnLeft()
-        turtle.turnLeft()
-        turtle.drop()
-        turtle.turnRight()
-        turtle.turnRight()
     end
 end
 
@@ -80,11 +77,9 @@ end
 -- Parameters:
 -- name : string Name of the fertilizer
 function lumberjack.fertilize(name)
-    turtle.turnLeft()
-    turtle.turnLeft()
+    turtle.turnRight()
     local fert = lumberjack.pullItem(name, 64)
-    turtle.turnRight()
-    turtle.turnRight()
+    turtle.turnLeft()
     if fert then
         local _, item = turtle.inspect()
         local name = item["name"]
@@ -95,11 +90,11 @@ function lumberjack.fertilize(name)
             name = item["name"]
             islog = string.match(name, lumberjack.LOG_PATTERN)
         end
-        turtle.turnLeft()
-        turtle.turnLeft()
+        turtle.turnRight()
+        turtle.turnRight()
         turtle.drop()
-        turtle.turnRight()
-        turtle.turnRight()
+        turtle.turnLeft()
+        turtle.turnLeft()
     end
 end
 
