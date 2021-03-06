@@ -6,7 +6,7 @@ Each inventory must hold only one type of item (i.e. Barrels/drawers).
 
 lumberjack = {}
 
-lumberjack.LOG_PATTERN = "[%a]+:[%a_]+log"
+lumberjack.LOG_PATTERN = "[%a]+:[%a_]*log"
 
 -- Chops down a tree in front of the turtle.
 function lumberjack.chop()
