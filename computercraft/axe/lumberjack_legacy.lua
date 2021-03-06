@@ -107,6 +107,8 @@ function lumberjack.pullItem(name, amount)
         turtle.turnRight()
         -- No Barrel -> exit.
         if not turtle.inspect() then
+            turtle.turnRight()
+            turtle.turnRight()
             break
         end
         turtle.suck(1)
