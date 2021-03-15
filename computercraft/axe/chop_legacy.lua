@@ -39,6 +39,7 @@ function cycle()
 end
 
 -- Try to chop in case you got stuck mid-air
+turtle.up()
 cycle()
 -- Try to orient yourself
 findOrientation()
